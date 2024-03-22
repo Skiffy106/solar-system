@@ -1,0 +1,13 @@
+.DS_Store
+
+*.cpuprofile
+*.local
+*.log
+.vscode
+node_modules
+
+TODOs.md
+.eslintcache
+
+package-lock.json
+vite-env.d.ts
