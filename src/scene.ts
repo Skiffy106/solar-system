@@ -11,7 +11,6 @@ import {
   PerspectiveCamera,
   PlaneGeometry,
   PointLight,
-  PointLightHelper,
   Scene,
   Vector3,
   WebGLRenderer,
@@ -35,7 +34,6 @@ let pointLight: PointLight;
 let camera: PerspectiveCamera;
 let cameraControls: OrbitControls;
 let axesHelper: AxesHelper;
-let pointLightHelper: PointLightHelper;
 let clock: Clock;
 let stats: Stats;
 let gui: GUI;
@@ -106,6 +104,7 @@ function init() {
     scene.add(plane);
 
     planets = generatePlanets(scene);
+    console.log(planets);
   }
 
   // ===== 🎥 CAMERA =====
@@ -137,13 +136,9 @@ function init() {
 
   // ===== 🪄 HELPERS =====
   {
-    axesHelper = new AxesHelper(4);
+    axesHelper = new AxesHelper(10);
     axesHelper.visible = false;
     scene.add(axesHelper);
-
-    pointLightHelper = new PointLightHelper(pointLight, undefined, "orange");
-    pointLightHelper.visible = false;
-    scene.add(pointLightHelper);
 
     const gridHelper = new GridHelper(20, 20, "teal", "darkgray");
     gridHelper.position.y = -0.01;
@@ -194,8 +189,9 @@ function animate() {
 
   stats.update();
 
+  const delta = clock.getDelta();
   planets.forEach((planet) => {
-    planet.animate(clock);
+    planet.animate(delta);
   });
 
   if (resizeRendererToDisplaySize(renderer)) {

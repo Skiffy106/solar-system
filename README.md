@@ -21,9 +21,9 @@ This project is for the Computer Science Lab at SBCC.
 Installation
 
 ```bash
-git clone TODO
-cd TODO
-npm i
+git clone https://github.com/Skiffy106/solar-system.git
+cd solar-system
+npm install
 npm run dev
 ```
 

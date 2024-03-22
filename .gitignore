@@ -6,7 +6,6 @@
 .vscode
 node_modules
 
-TODOs.md
 .eslintcache
 
 package-lock.json

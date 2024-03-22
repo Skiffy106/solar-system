@@ -1,9 +1,10 @@
 import {
   Mesh,
   MeshBasicMaterial,
+  MeshStandardMaterial,
   SphereGeometry,
-  Clock,
   TextureLoader,
+  Vector3,
 } from "three";
 import { planetTemplate } from "./planetHandler";
 
@@ -14,7 +15,7 @@ class Planet extends Mesh {
   constructor(planetData: planetTemplate) {
     const geometry = new SphereGeometry(planetData.radius, 32, 16);
     const texture = new TextureLoader().load(planetData.textureFile);
-    const material = new MeshBasicMaterial({ map: texture });
+    const material = new MeshStandardMaterial({ map: texture });
     super(geometry, material);
     this.name = planetData.name;
     // this.solarRadius = solarRadius;
@@ -23,11 +24,11 @@ class Planet extends Mesh {
     this.translateX(planetData.solarRadius);
   }
 
-  public animate(clock: Clock) {
-    const elapsed = clock.getDelta();
-    this.rotateY(elapsed * this.rotationSpeed);
-
+  public animate(delta: number) {
+    this.rotateY(delta * this.rotationSpeed * 0.1);
     // TODO
+    const axis = new Vector3(0, 1, 0);
+    this.rotateOnWorldAxis(axis, delta * this.revolutionSpeed * 0.1);
   }
 }
 

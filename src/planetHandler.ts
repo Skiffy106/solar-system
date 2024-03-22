@@ -1,4 +1,4 @@
-import { Scene } from "three";
+import { PointLight, Scene } from "three";
 import { Planet } from "./planets";
 
 export type planetTemplate = {
@@ -8,6 +8,7 @@ export type planetTemplate = {
   rotationSpeed: number;
   revolutionSpeed: number;
   textureFile: string;
+  isStar?: boolean;
 };
 
 type planetsDataTemplate = {
@@ -28,7 +29,7 @@ export const solarSystemData: planetsDataTemplate = {
     {
       name: "Earth",
       radius: 2,
-      solarRadius: 0,
+      solarRadius: 10,
       rotationSpeed: 0,
       revolutionSpeed: 0,
       textureFile: "earth.jpg",
@@ -58,7 +59,10 @@ export function generatePlanets(scene: Scene): Planet[] {
   const retArr: Planet[] = [];
 
   const sun = new Planet(solarSystemData.star);
+  const pointLight = new PointLight(0xffffff, 2, 300);
+
   retArr.push(sun);
+  scene.add(pointLight);
   scene.add(sun);
 
   solarSystemData.planets.forEach((planetData) => {
