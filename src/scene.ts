@@ -74,15 +74,16 @@ function init() {
 
   // ===== 💡 LIGHTS =====
   {
+    // ambientLight = new AmbientLight(0x333333);
     ambientLight = new AmbientLight("white", 0.4);
-    pointLight = new PointLight("white", 20, 100);
-    pointLight.position.set(-2, 2, 2);
-    pointLight.castShadow = true;
-    pointLight.shadow.radius = 4;
-    pointLight.shadow.camera.near = 0.5;
-    pointLight.shadow.camera.far = 4000;
-    pointLight.shadow.mapSize.width = 2048;
-    pointLight.shadow.mapSize.height = 2048;
+    pointLight = new PointLight("white", 200, 100);
+    // pointLight.position.set(-2, 2, 2);
+    // pointLight.castShadow = true;
+    // pointLight.shadow.radius = 4;
+    // pointLight.shadow.camera.near = 0.5;
+    // pointLight.shadow.camera.far = 4000;
+    // pointLight.shadow.mapSize.width = 2048;
+    // pointLight.shadow.mapSize.height = 2048;
     scene.add(ambientLight);
     scene.add(pointLight);
   }

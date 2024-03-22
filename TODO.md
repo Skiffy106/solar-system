@@ -2,8 +2,9 @@
 
 - [ ] Planets
   - [x] Images
-  - [ ] Rotations
-  - [ ] Revolutions
+  - [x] Rotations
+  - [x] Revolutions
+  - [ ] All Planets
 - [ ] Animations
   - [ ] Camera Follow
 - [ ] Star Background
